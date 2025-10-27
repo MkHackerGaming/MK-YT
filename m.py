@@ -200,7 +200,7 @@ def send_welcome(message):
 
     markup.add(btn1, btn2, btn3, btn4)
 
-    bot.send_message(message.chat.id, "*🔆 WELCOME TO VIP LSR DDOS BOT 🔆*", reply_markup=markup, parse_mode='Markdown')
+    bot.send_message(message.chat.id, "*🔆 WELCOME TO MK DDOS BOT 🔆*", reply_markup=markup, parse_mode='Markdown')
 
 
 @bot.message_handler(func=lambda message: True)
