@@ -14,7 +14,7 @@ from threading import Thread
 loop = asyncio.get_event_loop()
 TOKEN = '8434830192:AAEZWQOIaKeH05iHfD7BMyb8v1AR6UKmkic'
 MONGO_URI = 'mongodb+srv://ihatemosquitos9:JvOK4gNs0SH5SVw9@cluster0.1pd5kt5.mongodb.net/?appName=Cluster0'
-CHANNEL_ID = -1003281762386
+USER_ID = 8224244578
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
@@ -80,7 +80,7 @@ def send_not_approved_message(chat_id):
 def approve_or_disapprove_user(message):
     user_id = message.from_user.id
     chat_id = message.chat.id
-    is_admin = is_user_admin(user_id, CHANNEL_ID)
+    is_admin = is_user_admin(user_id, USER_ID)
     cmd_parts = message.text.split()
     if not is_admin:
         bot.send_message(chat_id, "*You are not authorized to use this command*", parse_mode='Markdown')
@@ -120,7 +120,7 @@ def approve_or_disapprove_user(message):
         msg_text = f"*User {target_user_id} disapproved*"
 
     bot.send_message(chat_id, msg_text, parse_mode='Markdown')
-    bot.send_message(CHANNEL_ID, msg_text, parse_mode='Markdown')
+    bot.send_message(USER_ID, msg_text, parse_mode='Markdown')
     
 @bot.message_handler(commands=['Attack'])
 def attack_command(message):
